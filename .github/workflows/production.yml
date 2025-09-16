@@ -21,11 +21,11 @@ jobs:
 
       - name: Build web app
         run: flutter build web --release
-        working-directory: flutter_web
+        working-directory: .
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: flutter_web/build/web
+          publish_dir: build/web
           publish_branch: gh-pages
