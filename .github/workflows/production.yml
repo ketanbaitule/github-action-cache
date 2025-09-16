@@ -12,13 +12,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        
+      - name: Cache Flutter SDK
+        uses: actions/cache@v4
+        with:
+          path: ~/.flutter
+          key: flutter-sdk-${{ runner.os }}-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: |
+        flutter-sdk-${{ runner.os }}-
 
       - name: Install Flutter
         uses: britannio/action-install-flutter@v1
 
-      - name: Install Dependencies
-        run: flutter pub get
+      - name: Cache Pub Packages
+        uses: actions/cache@v4
+        with:
+          path: |
+        ~/.pub-cache
+          key: pub-cache-${{ runner.os }}-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: |
+        pub-cache-${{ runner.os }}-
 
+      - name: Install Dependencies
+        run: flutter pub get 
+      
       - name: Build web app
         run: flutter build web --release
         working-directory: .
