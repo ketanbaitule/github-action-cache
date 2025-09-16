@@ -19,7 +19,7 @@ jobs:
           path: ~/.flutter
           key: flutter-sdk-${{ runner.os }}-${{ hashFiles('**/pubspec.yaml') }}
           restore-keys: |
-        flutter-sdk-${{ runner.os }}-
+            flutter-sdk-${{ runner.os }}-
 
       - name: Install Flutter
         uses: britannio/action-install-flutter@v1
