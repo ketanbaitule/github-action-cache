@@ -28,7 +28,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-        ~/.pub-cache
+           ~/.pub-cache
           key: pub-cache-${{ runner.os }}-${{ hashFiles('**/pubspec.yaml') }}
           restore-keys: |
         pub-cache-${{ runner.os }}-
